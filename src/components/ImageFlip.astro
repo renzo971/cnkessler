@@ -1,0 +1,35 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  text: string;
+  BackImage: ImageMetadata;
+  className?: string;
+  sizew?: number;
+}
+const { BackImage, text, className = "" } = Astro.props;
+---
+
+<div class="relative group w-auto h-auto items-center">
+  <!-- Imagen usando la etiqueta <Image> de Astro -->
+  <Image
+    src={BackImage}
+    alt="Comida"
+    class={className + " object-cover w-full h-full"}
+    loading="lazy"
+  />
+
+  <!-- Texto oculto que aparece al hacer hover -->
+  <div
+    class="rounded-xl absolute inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+    <p class="text-lg font-bold">{text}</p>
+  </div>
+</div>
+<style>
+  img[loading] {
+    /* Estilos para la imagen mientras carga */
+    background-color: #f0f0f0; /* Color de fondo placeholder */
+  }
+</style>

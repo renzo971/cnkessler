@@ -1,0 +1,148 @@
+---
+//import { Social } from "./reactcomponents/Social";
+import Socialicons from "./Socialicons.astro";
+import Logo from "../assets/logov2.webp";
+import { Image } from "astro:assets";
+const pages = [
+  { url: "#hero", title: "Inicio" },
+  { url: "#about", title: "¿Quienes somos?" },
+  { url: "#servicios", title: "Servicios" },
+  { url: "#contac", title: "Contacto" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="absolute inset-x-0 top-0 z-50 bg-violeta shadow-md">
+  <nav
+    class="flex items-center justify-between p-2 lg:px-5"
+    aria-label="Global"
+  >
+    <div class="flex lg:flex-1">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Your Company</span>
+        <Image src={Logo} alt="Logo de la empresa" width={100} />
+      </a>
+    </div>
+    <!-- Botón menú móvil -->
+    <div class="flex lg:hidden">
+      <button
+        id="menu-btn"
+        type="button"
+        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Menú de escritorio -->
+    <div class="hidden lg:flex lg:gap-x-12">
+      {
+        pages.map((page) => (
+          <a
+            href={page.url}
+            class={`text-sm font-semibold hover:text-sky-400 ${
+              currentPath === page.url ? "text-sky-400" : "text-white"
+            }`}
+          >
+            {page.title}
+          </a>
+        ))
+      }
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <Socialicons />
+      {/*<Social client:load />*/}
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden fixed inset-0 z-50 bg-violeta px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform transform translate-x-full"
+  >
+    <div class="flex items-center justify-between">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Your Company</span>
+        <Image src={Logo} alt="Logo de la empresa" width={100} />
+      </a>
+      <button
+        id="close-menu"
+        type="button"
+        class="-m-2.5 rounded-md p-2.5 text-gray-700"
+      >
+        <span class="sr-only">Cerrar menu</span>
+        <svg
+          class="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="mt-6">
+      {
+        pages.map((page) => (
+          <a
+            href={page.url}
+            class={`block px-3 py-2 text-base font-semibold text-white hover:bg-gray-50" ${
+              currentPath === page.url ? "text-sky-400" : "text-white"
+            }`}
+          >
+            {page.title}
+          </a>
+        ))
+      }
+    </div>
+    <div class="py-6">
+      <Socialicons />
+    </div>
+  </div>
+</header>
+
+<script lang="ts">
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const closeMenu = document.getElementById("close-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (!menuBtn || !closeMenu || !mobileMenu) return; // Evita errores si algún elemento no se encuentra
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden", "translate-x-full");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      mobileMenu.classList.add("translate-x-full");
+      setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileMenu.contains(event.target) &&
+        !menuBtn.contains(event.target)
+      ) {
+        mobileMenu.classList.add("translate-x-full");
+        setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+      }
+    });
+  });
+</script>

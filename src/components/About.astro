@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import becqer from "../assets/equipo/becqer.webp";
+import caroline from "../assets/equipo/caroline.webp";
+import debora from "../assets/equipo/debora.webp";
+import elizabeth from "../assets/equipo/elizabeth.webp";
+import Titles from "./Titles.astro";
+import ImageFlip from "./ImageFlip.astro";
+---
+
+<section id="about" class="bg-white py-10 lg:py-20">
+  <div class="container mx-auto px-5 grid lg:grid-cols-2 gap-8 items-center">
+    <div>
+      <Titles text1="¿Quiénes" text2="somos?" />
+
+      <p class="text-gray-600 mt-4 text-justify md:text-left">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem cumque
+        libero, culpa a ex saepe, voluptatum maiores nemo quibusdam nihil fugit
+        temporibus tenetur velit repellendus facilis quos ipsa odio modi.
+      </p>
+      <p class="text-gray-600 mt-4 text-justify md:text-left">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quae
+        cumque quam sint natus maiores laudantium nobis ipsum quibusdam,
+        suscipit eos quos impedit culpa vero pariatur veniam, quod debitis quas.
+      </p>
+    </div>
+
+    <!-- Contenedor de imágenes en cuadrícula -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex justify-center">
+        <ImageFlip
+          BackImage={caroline}
+          text="Este es el equipo completo"
+          className="rounded-xl w-full max-w-xs"
+        />
+      </div>
+      <div class="flex justify-center">
+        <ImageFlip
+          BackImage={debora}
+          text="Este es el equipo completo"
+          className="rounded-xl w-full max-w-xs"
+        />
+      </div>
+      <div class="flex justify-center">
+        <ImageFlip
+          BackImage={elizabeth}
+          text="Este es el equipo completo"
+          className="rounded-xl w-full max-w-xs"
+        />
+      </div>
+      <div class="flex justify-center">
+        <ImageFlip
+          BackImage={becqer}
+          text="Este es el equipo completo"
+          className="rounded-xl w-full max-w-xs"
+        />
+      </div>
+    </div>
+  </div>
+</section>

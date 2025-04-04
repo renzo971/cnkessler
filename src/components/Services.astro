@@ -1,0 +1,52 @@
+---
+import servicio1 from "@/assets/servicios/servicio1.webp";
+import servicio2 from "@/assets/servicios/servicio1.webp";
+import servicio3 from "@/assets/servicios/servicio3.webp";
+import servicio4 from "@/assets/servicios/servicio4.webp";
+import servicio5 from "@/assets/equipo/caroline.webp";
+import { Image } from "astro:assets";
+const servicios = [
+  {
+    titulo: "Potenciales Evocados Visuales",
+    imagen: servicio1,
+  },
+  { titulo: "Electromiografía", imagen: servicio2 },
+  {
+    titulo: "Potenciales Evocados Auditivos",
+    imagen: servicio3,
+  },
+  { titulo: "Neuroconducción", imagen: servicio4 },
+  {
+    titulo: "Electroencefalograma",
+    imagen: servicio5,
+  },
+];
+---
+
+<section class="bg-white py-10">
+  <div class="max-w-6xl mx-auto text-center">
+    <h1
+      class="text-violeta font-medium text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
+    >
+      Servicios <span class="font-extrabold">Generales</span>
+    </h1>
+  </div>
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
+  >
+    {
+      servicios.map((servicio) => (
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image
+            src={servicio.imagen}
+            alt={servicio.titulo}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-center bg-violeta text-white">
+            <p class="font-semibold">{servicio.titulo}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
