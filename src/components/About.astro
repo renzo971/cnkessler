@@ -6,23 +6,23 @@ import debora from "../assets/equipo/debora.webp";
 import elizabeth from "../assets/equipo/elizabeth.webp";
 import Titles from "./Titles.astro";
 import ImageFlip from "./ImageFlip.astro";
+import Typography from "./Typography.astro";
 ---
 
 <section id="about" class="bg-white py-10 lg:py-20">
   <div class="container mx-auto px-5 grid lg:grid-cols-2 gap-8 items-center">
     <div>
       <Titles text1="¿Quiénes" text2="somos?" />
-
-      <p class="text-gray-600 mt-4 text-justify md:text-left">
+      <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem cumque
         libero, culpa a ex saepe, voluptatum maiores nemo quibusdam nihil fugit
         temporibus tenetur velit repellendus facilis quos ipsa odio modi.
-      </p>
-      <p class="text-gray-600 mt-4 text-justify md:text-left">
+      </Typography>
+      <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quae
         cumque quam sint natus maiores laudantium nobis ipsum quibusdam,
         suscipit eos quos impedit culpa vero pariatur veniam, quod debitis quas.
-      </p>
+      </Typography>
     </div>
 
     <!-- Contenedor de imágenes en cuadrícula -->

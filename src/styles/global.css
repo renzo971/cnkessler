@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
+@plugin "@midudev/tailwind-animations";
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -9,6 +9,7 @@
     --color-purpurahumo: #504957;
     --color-cafe: #9a7e71;
     --color-gris: #a5a2ac;
+    --font-montserrat: "Montserrat", sans-serif;
 }
 
 :root {

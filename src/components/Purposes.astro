@@ -2,18 +2,24 @@
 import { Image } from "astro:assets";
 import equipo from "../assets/equipo/equipo.webp";
 import Titles from "./Titles.astro";
+import Typography from "./Typography.astro";
 ---
 
 <section class="min-h-screen bg-white flex items-center py-10">
-  <div class="container mx-auto px-5 grid lg:grid-cols-2 gap-8">
+  <div class="container mx-auto grid lg:grid-cols-2 gap-8">
     <div>
       <Titles text1="Nuestro" text2="Propósito" />
-
-      <p class="text-justify text-gray-500 mt-4">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem cumque
-        libero, culpa a ex saepe, voluptatum maiores nemo quibusdam nihil fugit
-        temporibus tenetur velit repellendus facilis quos ipsa odio modi.
-      </p>
+      <Typography
+        as="p"
+        variant="p"
+        color="gris"
+        class:list={"text-justify mt-4"}
+      >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit
+        esse corrupti cupiditate cumque commodi aliquam, eaque aut tempore
+        facilis ratione rerum mollitia, voluptatum impedit dicta unde tenetur.
+        Officiis, tempora. Officiis!
+      </Typography>
 
       <div class="bg-violeta text-white p-6 mt-6 rounded-2xl">
         <div class="flex flex-col sm:flex-row items-start gap-4">
@@ -28,11 +34,13 @@ import Titles from "./Titles.astro";
             ></path>
           </svg>
           <div>
-            <h2 class="font-bold">MISIÓN:</h2>
-            <p>
+            <Typography as="h2" variant="h2" color="white" class="font-bold">
+              MISIÓN:
+            </Typography>
+            <Typography as="p" variant="medium" color="white">
               “Brindar una atención de calidad con excelencia, calidez y
               precisión en el diagnóstico de las afecciones neurológicas”.
-            </p>
+            </Typography>
           </div>
         </div>
 
@@ -49,13 +57,16 @@ import Titles from "./Titles.astro";
             ></path>
           </svg>
           <div>
-            <h2 class="font-bold">VISIÓN:</h2>
-            <p>
+            <Typography as="h2" variant="h2" color="white" class="font-bold">
+              VISIÓN:
+            </Typography>
+            <Typography as="p" variant="medium" color="white">
               “Ser un centro líder en el cuidado de la salud neurológica a nivel
               Latinoamérica, con un compromiso de innovación y mejora continua,
               brindando una atención de excelencia, con el bienestar de nuestros
               pacientes como nuestra principal motivación”.
-            </p>
+            </Typography>
+            <p></p>
           </div>
         </div>
       </div>

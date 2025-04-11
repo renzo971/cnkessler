@@ -5,6 +5,7 @@ import servicio3 from "@/assets/servicios/servicio3.webp";
 import servicio4 from "@/assets/servicios/servicio4.webp";
 import servicio5 from "@/assets/equipo/caroline.webp";
 import { Image } from "astro:assets";
+import Typography from "./Typography.astro";
 const servicios = [
   {
     titulo: "Potenciales Evocados Visuales",
@@ -23,13 +24,11 @@ const servicios = [
 ];
 ---
 
-<section class="bg-white py-10">
+<section class="bg-white pt-5 pb-5">
   <div class="max-w-6xl mx-auto text-center">
-    <h1
-      class="text-violeta font-medium text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
-    >
+    <Typography as="h1" variant="bigger" color="secondary">
       Servicios <span class="font-extrabold">Generales</span>
-    </h1>
+    </Typography>
   </div>
   <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
@@ -40,11 +39,8 @@ const servicios = [
           <Image
             src={servicio.imagen}
             alt={servicio.titulo}
-            class="w-full h-48 object-cover"
+            class="w-full h-60 object-cover"
           />
-          <div class="p-4 text-center bg-violeta text-white">
-            <p class="font-semibold">{servicio.titulo}</p>
-          </div>
         </div>
       ))
     }
