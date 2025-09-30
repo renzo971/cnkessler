@@ -6,20 +6,47 @@ import servicio4 from "@/assets/servicios/servicio4.webp";
 import servicio5 from "@/assets/equipo/caroline.webp";
 import { Image } from "astro:assets";
 import Typography from "./Typography.astro";
-const servicios = [
-  {
-    titulo: "Potenciales Evocados Visuales",
-    imagen: servicio1,
-  },
-  { titulo: "Electromiografía", imagen: servicio2 },
+import ImageFlip from "./ImageFlip.astro";
+const serviciosgenerales = [
   {
     titulo: "Potenciales Evocados Auditivos",
-    imagen: servicio3,
+    imagen: servicio1,
   },
-  { titulo: "Neuroconducción", imagen: servicio4 },
+  { titulo: "Neuroconducción", imagen: servicio2 },
   {
     titulo: "Electroencefalograma",
-    imagen: servicio5,
+    imagen: servicio3,
+  },
+  { titulo: "Electromiografía", imagen: servicio4 },
+];
+const serviciosespeciales = [
+  {
+    titulo: " Vídeoelectroencefalograma nocturno y prolongado",
+    imagen: servicio1,
+  },
+  {
+    titulo:
+      "Pruebas especiales para la valoración del sistema nervioso autónomo",
+    imagen: servicio2,
+  },
+  {
+    titulo: "Test de Jolly ",
+    imagen: servicio3,
+  },
+  { titulo: "Electromiografía de segmentos especiales", imagen: servicio4 },
+];
+const medicinas = [
+  {
+    titulo: "Polisomnografía con titulación de CPAP ",
+    imagen: servicio1,
+  },
+  {
+    titulo: "Polisomnografía diagnóstica",
+    imagen: servicio2,
+  },
+  {
+    titulo: "oligrafía respiratoria ",
+    imagen: servicio3,
   },
 ];
 ---
@@ -31,18 +58,80 @@ const servicios = [
     </Typography>
   </div>
   <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
+    class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
   >
     {
-      servicios.map((servicio) => (
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-          <Image
-            src={servicio.imagen}
-            alt={servicio.titulo}
-            class="w-full h-60 object-cover"
-          />
+      serviciosgenerales.map((serviciogeneral, i) => (
+        // si es el primer elemento, que ocupe toda la fila en lg (col-span-3)
+        <div class={i === 0 ? "col-span-1 lg:col-span-3" : "col-span-1"}>
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <ImageFlip
+              BackImage={serviciogeneral.imagen}
+              text={serviciogeneral.titulo}
+              className={
+                i === 0
+                  ? "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+                  : "rounded-xl w-full h-56 md:h-56 lg:h-40 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+              }
+            />
+          </div>
         </div>
       ))
     }
   </div>
+</section><section class="bg-white pt-5 pb-5">
+  <div class="max-w-6xl mx-auto text-center">
+    <Typography as="h1" variant="bigger" color="secondary">
+      Servicios <span class="font-extrabold">Especiales</span>
+    </Typography>
+  </div>
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
+  >
+    {
+      serviciosespeciales.map((servicioespeciale, i) => (
+        <div class={i === 0 ? "col-span-1 lg:col-span-3" : "col-span-1"}>
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <ImageFlip
+              BackImage={servicioespeciale.imagen}
+              text={servicioespeciale.titulo}
+              className={
+                i === 0
+                  ? "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+                  : "rounded-xl w-full h-56 md:h-56 lg:h-40 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+              }
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <section class="bg-white pt-5 pb-5">
+    <div class="max-w-6xl mx-auto text-center">
+      <Typography as="h1" variant="bigger" color="secondary">
+        Medicina del <span class="font-extrabold">sueño</span>
+      </Typography>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
+    >
+      {
+        medicinas.map((medicina, i) => (
+          <div class={i === 0 ? "col-span-1 lg:col-span-3" : "col-span-1"}>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+              <ImageFlip
+                BackImage={medicina.imagen}
+                text={medicina.titulo}
+                className={
+                  i === 0
+                    ? "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+                    : "rounded-xl w-full h-56 md:h-56 lg:h-40 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+                }
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </section>

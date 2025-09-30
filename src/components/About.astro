@@ -7,6 +7,14 @@ import elizabeth from "../assets/equipo/elizabeth.webp";
 import Titles from "./Titles.astro";
 import ImageFlip from "./ImageFlip.astro";
 import Typography from "./Typography.astro";
+const team = [
+  { img: caroline, name: "Caroline" },
+  { img: debora, name: "Débora" },
+  { img: elizabeth, name: "Elizabeth" },
+  { img: elizabeth, name: "Miembro 4" },
+  { img: elizabeth, name: "Miembro 5" },
+  { img: elizabeth, name: "Miembro 6" },
+];
 ---
 
 <section id="about" class="bg-white py-10 lg:py-20">
@@ -14,47 +22,36 @@ import Typography from "./Typography.astro";
     <div>
       <Titles text1="¿Quiénes" text2="somos?" />
       <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem cumque
-        libero, culpa a ex saepe, voluptatum maiores nemo quibusdam nihil fugit
-        temporibus tenetur velit repellendus facilis quos ipsa odio modi.
+        Desde 2017, nos hemos consolidado como un centro peruano dedicado al
+        cuidado de la salud neurológica. Nos especializamos en la realización de
+        estudios neurofisiológicos que examinan de manera dinámica y objetiva el
+        funcionamiento del sistema nervioso. Nuestro enfoque se caracteriza por
+        ofrecer la máxima calidad técnica, respaldada por estándares
+        internacionales, gracias a un equipo humano altamente capacitado, cuyo
+        principal objetivo es el bienestar de nuestros pacientes.
       </Typography>
       <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quae
-        cumque quam sint natus maiores laudantium nobis ipsum quibusdam,
-        suscipit eos quos impedit culpa vero pariatur veniam, quod debitis quas.
+        Contamos con equipos médicos de última generación y espacios diseñados
+        para su comodidad, lo que nos permite ofrecer precisión en el
+        diagnóstico, pronóstico y orientación terapéutica de las diversas
+        afecciones neurológicas.
       </Typography>
     </div>
 
-    <!-- Contenedor de imágenes en cuadrícula -->
-    <div class="grid grid-cols-2 gap-4">
-      <div class="flex justify-center">
-        <ImageFlip
-          BackImage={caroline}
-          text="Este es el equipo completo"
-          className="rounded-xl w-full max-w-xs"
-        />
-      </div>
-      <div class="flex justify-center">
-        <ImageFlip
-          BackImage={debora}
-          text="Este es el equipo completo"
-          className="rounded-xl w-full max-w-xs"
-        />
-      </div>
-      <div class="flex justify-center">
-        <ImageFlip
-          BackImage={elizabeth}
-          text="Este es el equipo completo"
-          className="rounded-xl w-full max-w-xs"
-        />
-      </div>
-      <div class="flex justify-center">
-        <ImageFlip
-          BackImage={becqer}
-          text="Este es el equipo completo"
-          className="rounded-xl w-full max-w-xs"
-        />
-      </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center"
+    >
+      {
+        team.map((member) => (
+          <div class="flex justify-center w-full">
+            <ImageFlip
+              BackImage={caroline}
+              text={member.name}
+              className="rounded-xl w-full max-w-xs transition-transform duration-200 ease-in-out transform hover:scale-105"
+            />
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
