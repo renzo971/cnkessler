@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
+import Typography from "./Typography.astro";
 
 interface Props {
   text: string;
@@ -11,21 +12,33 @@ interface Props {
 const { BackImage, text, className = "" } = Astro.props;
 ---
 
-<div class="relative group w-auto h-auto items-center">
+<div class="flex flex-col items-center group w-auto h-auto">
   <!-- Imagen usando la etiqueta <Image> de Astro -->
-  <Image
-    src={BackImage}
-    alt="Comida"
-    class={className + " object-cover w-full h-full"}
-    loading="lazy"
-  />
+  <div class="relative w-full">
+    <Image
+      src={BackImage}
+      alt={text}
+      class={className + " object-cover w-full h-full"}
+      loading="lazy"
+    />
 
-  <!-- Texto oculto que aparece al hacer hover -->
-  <div
-    class="rounded-xl absolute inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-  >
-    <p class="text-lg font-bold">{text}</p>
+    <!-- Texto oculto que aparece al hacer hover (pantallas con hover) -->
+    <div
+      class="rounded-xl absolute inset-0 flex items-center justify-center bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"
+    >
+      <p class="text-lg font-bold">{text}</p>
+    </div>
   </div>
+
+  <!-- Texto visible solo en dispositivos pequeños (debajo de la imagen) -->
+  <Typography
+    as="p"
+    variant="small"
+    color="gris"
+    class="mt-2 text-center block z-20 lg:hidden"
+  >
+    {text}
+  </Typography>
 </div>
 <style>
   img[loading] {

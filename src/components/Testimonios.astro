@@ -1,0 +1,75 @@
+---
+import Typography from "./Typography.astro";
+
+const opiniones = [
+  {
+    texto:
+      "Neurodiagnostico Kessler es sinónimo de confianza, amabilidad, seguridad y profesionalismo. Es saber que estamos en buenas manos con un diagnóstico certero.",
+    autor: "Mamá de Fabianna",
+    rating: 5,
+  },
+  {
+    texto:
+      "Para mí Kessler es un centro especializado en exámenes neurológicos pero también en la parte humana; son profesionales empáticos y nos acompañan en el proceso.",
+    autor: "Mamá de Joaquín",
+    rating: 5,
+  },
+  {
+    texto:
+      "Es el lugar donde nos ayudaron en las pruebas más difíciles para nuestro pequeño, desde sus 2 meses hasta casi 3 años. Agradecemos su apoyo y paciencia.",
+    autor: "Mamá de Santiago",
+    rating: 5,
+  },
+  {
+    texto:
+      "Llevo a mi hija con total confianza para que le realicen sus exámenes. Recibo cordialidad y profesionalismo.",
+    autor: "Mamá de Micaela",
+    rating: 4,
+  },
+];
+---
+
+<section class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <Typography as="h2" variant="bigger" color="secondary">OPINIONES</Typography>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {opiniones.map((o) => (
+      <article class="rounded-2xl overflow-hidden shadow-lg flex flex-col h-full">
+        <!-- área de contenido: flexible y scrollable si es muy largo -->
+        <div class="bg-[#efe6f7] p-4 sm:p-6 flex-1 min-h-[160px] sm:min-h-[180px] md:min-h-[200px] overflow-auto">
+          <Typography
+            as="p"
+            variant="small"
+            color="gris"
+            class="text-sm sm:text-base leading-relaxed text-justify break-words"
+          >
+            {o.texto}
+          </Typography>
+        </div>
+
+        <!-- franja inferior: estrellas centradas y autor debajo -->
+        <div class="bg-[#6b1f6f] text-white px-3 py-3 flex flex-col items-center gap-2">
+          <div class="flex items-center gap-1 justify-center">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill={i < o.rating ? "#FFD24D" : "#d1c2d8"}
+                class="w-4 h-4 sm:w-5 sm:h-5"
+                aria-hidden="true"
+              >
+                <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.789 1.402 8.173L12 18.896l-7.336 3.876 1.402-8.173L.132 9.21l8.2-1.192z" />
+              </svg>
+            ))}
+          </div>
+
+          <div class="bg-[#7b2a85] text-xs sm:text-sm font-semibold px-3 py-1 rounded-full text-center">
+            {o.autor}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

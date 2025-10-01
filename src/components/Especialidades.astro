@@ -1,0 +1,482 @@
+---
+import Typography from "./Typography.astro";
+import {
+  Endocrinología,
+  Neurocirugía,
+  Neurología,
+  Neuropediatría,
+  Oftalmología,
+  Otorrinolaringología,
+  Psiquiatría,
+  Reumatología,
+  Traumatología,
+} from "@/components/icons/icons.jsx";
+
+const especialidades = [
+  "Neurología",
+  "Psiquiatría",
+  "Oftalmología",
+  "Neuropediatría",
+  "Traumatología",
+  "Otorrinolaringología",
+  "Neurocirugía",
+  "Reumatología",
+  "Endocrinología",
+];
+
+const getIcon = (name: string) => {
+  switch (name) {
+    case "Neurología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 3c2 0 3 1 3 3s1 3 1 5-1 3-1 5-1 3-3 3-3-1-3-3-1-3-1-5 1-3 1-5 1-3 3-3z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 12h8M10 8v8M14 8v8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      );
+    case "Psiquiatría":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 2a5 5 0 00-5 5v1a5 5 0 005 5 5 5 0 005-5V7a5 5 0 00-5-5z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 17a4 4 0 018 0v3H8v-3z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      );
+    case "Oftalmología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      );
+    case "Neuropediatría":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <circle
+            cx="12"
+            cy="8"
+            r="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5 20v-1a6 6 0 0114 0v1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      );
+    case "Traumatología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 12c0 1.5 1 3 3 3s3-1.5 3-3-1-3-3-3-3 1.5-3 3zM19 12c0 1.5-1 3-3 3s-3-1.5-3-3 1-3 3-3 3 1.5 3 3z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M8 12h8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      );
+    case "Otorrinolaringología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M20 12c0 4-4 8-8 8s-8-4-8-8 4-8 8-8c1.5 0 3 .5 4 1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M12 8v8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      );
+    case "Neurocirugía":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 21l18-9L3 3v7l12 2-12 2v7z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M14 10v4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      );
+    case "Reumatología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M7 7l10 10" stroke-linecap="round" stroke-linejoin="round" />
+          <path
+            d="M7 17l10-10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      );
+    case "Endocrinología":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            d="M8 2h8l2 6-2 6H8L6 8z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M12 14v6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      );
+    default:
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      );
+  }
+};
+---
+
+<section class="py-12 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <Typography as="h2" variant="bigger" color="secondary">
+      Aportamos en el <span class="font-extrabold">diagnóstico</span> de otras <span
+        class="font-extrabold">especialidades</span
+      >
+    </Typography>
+  </div>
+
+  <div
+    class="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-8"
+  >
+    {
+      especialidades.map((e) => (
+        <div class="flex flex-col items-center md:flex-row md:items-center md:justify-start gap-3 md:gap-4">
+          <div class="flex-shrink-0 rounded-lg bg-gradient-to-tr from-[#6b1f6f] to-[#7b2a85] p-3 md:p-3.5 w-12 h-12 md:w-12 md:h-12 flex items-center justify-center text-white">
+            {(() => {
+              switch (e) {
+                case "Neurología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 3c2 0 3 1 3 3s1 3 1 5-1 3-1 5-1 3-3 3-3-1-3-3-1-3-1-5 1-3 1-5 1-3 3-3z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 12h8M10 8v8M14 8v8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Psiquiatría":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2a5 5 0 00-5 5v1a5 5 0 005 5 5 5 0 005-5V7a5 5 0 00-5-5z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 17a4 4 0 018 0v3H8v-3z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Oftalmología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  );
+                case "Neuropediatría":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="12"
+                        cy="8"
+                        r="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5 20v-1a6 6 0 0114 0v1"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Traumatología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12c0 1.5 1 3 3 3s3-1.5 3-3-1-3-3-3-3 1.5-3 3zM19 12c0 1.5-1 3-3 3s-3-1.5-3-3 1-3 3-3 3 1.5 3 3z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 12h8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Otorrinolaringología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M20 12c0 4-4 8-8 8s-8-4-8-8 4-8 8-8c1.5 0 3 .5 4 1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 8v8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Neurocirugía":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 21l18-9L3 3v7l12 2-12 2v7z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14 10v4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Reumatología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M7 7l10 10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7 17l10-10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                case "Endocrinología":
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M8 2h8l2 6-2 6H8L6 8z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 14v6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  );
+                default:
+                  return (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  );
+              }
+            })()}
+          </div>
+
+          <div class="text-center md:text-left">
+            <p class="text-sm sm:text-base md:text-base text-gray-700 leading-tight">
+              {e}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

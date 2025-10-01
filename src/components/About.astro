@@ -11,7 +11,7 @@ const team = [
   { img: caroline, name: "Caroline" },
   { img: debora, name: "Débora" },
   { img: elizabeth, name: "Elizabeth" },
-  { img: elizabeth, name: "Miembro 4" },
+  { img: becqer, name: "Becquer" },
   { img: elizabeth, name: "Miembro 5" },
   { img: elizabeth, name: "Miembro 6" },
 ];
@@ -37,17 +37,16 @@ const team = [
         afecciones neurológicas.
       </Typography>
     </div>
-
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center"
+      class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center"
     >
       {
         team.map((member) => (
-          <div class="flex justify-center w-full">
+          <div class="flex flex-col items-center w-full">
             <ImageFlip
-              BackImage={caroline}
+              BackImage={member.img}
               text={member.name}
-              className="rounded-xl w-full max-w-xs transition-transform duration-200 ease-in-out transform hover:scale-105"
+              className="elemento-animado rounded-xl w-full max-w-xs transition-transform duration-200 ease-in-out transform hover:scale-105"
             />
           </div>
         ))
@@ -55,3 +54,21 @@ const team = [
     </div>
   </div>
 </section>
+<style>
+  @keyframes aparecer-con-scroll {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .elemento-animado {
+    opacity: 0; /* Asegura que el elemento está invisible inicialmente */
+    animation: aparecer-con-scroll both;
+    animation-timeline: view();
+    animation-range: entry 25% cover 50%;
+  }
+</style>
