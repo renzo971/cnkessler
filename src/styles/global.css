@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --color-principal: #5A2677;
-    --color-violeta: #834b8d;
+    --color-principal: #7c3288;
+    --color-violeta: #7c3288;
     --color-purpurahumo: #504957;
     --color-cafe: #9a7e71;
     --color-gris: #a5a2ac;
