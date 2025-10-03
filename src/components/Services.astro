@@ -1,54 +1,11 @@
 ---
-import servicio1 from "@/assets/servicios/servicio1.webp";
-import servicio2 from "@/assets/servicios/servicio1.webp";
-import servicio3 from "@/assets/servicios/servicio3.webp";
-import servicio4 from "@/assets/servicios/servicio4.webp";
-import servicio5 from "@/assets/equipo/caroline.webp";
-import { Image } from "astro:assets";
+import {
+  serviciosgenerales,
+  serviciosespeciales,
+  medicinas,
+} from "@/assets/servicios";
 import Typography from "./Typography.astro";
 import ImageFlip from "./ImageFlip.astro";
-const serviciosgenerales = [
-  {
-    titulo: "Potenciales Evocados Auditivos",
-    imagen: servicio1,
-  },
-  { titulo: "Neuroconducción", imagen: servicio2 },
-  {
-    titulo: "Electroencefalograma",
-    imagen: servicio3,
-  },
-  { titulo: "Electromiografía", imagen: servicio4 },
-];
-const serviciosespeciales = [
-  {
-    titulo: " Vídeoelectroencefalograma nocturno y prolongado",
-    imagen: servicio1,
-  },
-  {
-    titulo:
-      "Pruebas especiales para la valoración del sistema nervioso autónomo",
-    imagen: servicio2,
-  },
-  {
-    titulo: "Test de Jolly ",
-    imagen: servicio3,
-  },
-  { titulo: "Electromiografía de segmentos especiales", imagen: servicio4 },
-];
-const medicinas = [
-  {
-    titulo: "Polisomnografía con titulación de CPAP ",
-    imagen: servicio1,
-  },
-  {
-    titulo: "Polisomnografía diagnóstica",
-    imagen: servicio2,
-  },
-  {
-    titulo: "oligrafía respiratoria ",
-    imagen: servicio3,
-  },
-];
 ---
 
 <section class="bg-white pt-5 pb-5">
@@ -117,15 +74,13 @@ const medicinas = [
     >
       {
         medicinas.map((medicina, i) => (
-          <div class={i === 0 ? "col-span-1 lg:col-span-3" : "col-span-1"}>
+          <div class={"col-span-1"}>
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
               <ImageFlip
                 BackImage={medicina.imagen}
                 text={medicina.titulo}
                 className={
-                  i === 0
-                    ? "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
-                    : "rounded-xl w-full h-56 md:h-56 lg:h-40 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
+                  "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
                 }
               />
             </div>
