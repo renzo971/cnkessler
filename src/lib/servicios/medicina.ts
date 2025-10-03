@@ -1,6 +1,6 @@
-import servicio1 from "./servicio1.jpg";
-import servicio2 from "./servicio2.jpg";
-import servicio3 from "./servicio3.jpg";
+import servicio1 from "@/assets/servicios/medicinadelsueño/servicio1.jpg";
+import servicio2 from "@/assets/servicios/medicinadelsueño/servicio2.jpg";
+import servicio3 from "@/assets/servicios/medicinadelsueño/servicio3.jpg";
 export const medicinas = [
   {
     titulo: "Polisomnografía con titulación de CPAP ",
