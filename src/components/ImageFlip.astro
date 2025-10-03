@@ -19,7 +19,6 @@ const { BackImage, text, className = "" } = Astro.props;
       src={BackImage}
       alt={text}
       class={className + " object-cover w-full h-full"}
-      loading="lazy"
     />
 
     <!-- Texto oculto que aparece al hacer hover (pantallas con hover) -->
@@ -40,9 +39,3 @@ const { BackImage, text, className = "" } = Astro.props;
     {text}
   </Typography>
 </div>
-<style>
-  img[loading] {
-    /* Estilos para la imagen mientras carga */
-    background-color: #f0f0f0; /* Color de fondo placeholder */
-  }
-</style>
