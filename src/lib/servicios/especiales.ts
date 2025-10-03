@@ -1,10 +1,10 @@
 //import servicio1 from "@/assets/servicios/especiales/servicio1.webp";
-import servicio3 from "@/assets/servicios/especiales/servicio3.webp";
+//import servicio3 from "@/assets/servicios/especiales/servicio3.webp";
 import servicio4 from "@/assets/servicios/especiales/servicio4.webp";
 export const serviciosespeciales = [
   {
     titulo: " Vídeoelectroencefalograma nocturno y prolongado",
-    imagen: servicio3,
+    imagen: servicio4,
   },
   {
     titulo:
@@ -13,7 +13,7 @@ export const serviciosespeciales = [
   },
   {
     titulo: "Test de Jolly ",
-    imagen: servicio3,
+    imagen: servicio4,
   },
   { titulo: "Electromiografía de segmentos especiales", imagen: servicio4 },
 ];
