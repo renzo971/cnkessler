@@ -3,82 +3,116 @@ import { Image } from "astro:assets";
 import equipo from "../assets/equipo/equipo.webp";
 import Titles from "./Titles.astro";
 import Typography from "./Typography.astro";
+import Corazon from "@/assets/icons/Corazon.astro";
+import Ojos from "@/assets/icons/Ojos.astro";
+import Nave from "@/assets/icons/Nave.astro";
 ---
 
-<section class="min-h-screen bg-white flex items-center py-10">
-  <div class="container mx-auto grid lg:grid-cols-2 gap-8">
-    <div>
-      <Titles text1="Nuestro" text2="Propósito" />
-      <Typography
-        as="p"
-        variant="p"
-        color="gris"
-        class:list={"text-justify mt-4 bold "}
-      >
-        Contribuir al bienestar neurológico de nuestros pacientes, ofreciendo
-        diagnósticos precisos y confiables realizados con tecnología de
-        vanguardia y un equipo humano altamente capacitado, que combina la
-        excelencia científica con un trato cercano ético y empático, orientado
-        al cuidado de la salud neurológica
-      </Typography>
-
-      <div class="bg-violeta text-white p-6 mt-6 rounded-2xl">
-        <div class="flex flex-col sm:flex-row items-start gap-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="bi bi-rocket-fill text-white w-16 sm:w-28"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M10.175 1.991c.81 1.312 1.583 3.43 1.778 6.819l1.5 1.83A2.5 2.5 0 0 1 14 12.202V15.5a.5.5 0 0 1-.9.3l-1.125-1.5c-.166-.222-.42-.4-.752-.57-.214-.108-.414-.192-.627-.282l-.196-.083C9.7 13.793 8.85 14 8 14s-1.7-.207-2.4-.635q-.101.044-.198.084c-.211.089-.411.173-.625.281-.332.17-.586.348-.752.57L2.9 15.8a.5.5 0 0 1-.9-.3v-3.298a2.5 2.5 0 0 1 .548-1.562l.004-.005L4.049 8.81c.197-3.323.969-5.434 1.774-6.756.466-.767.94-1.262 1.31-1.57a3.7 3.7 0 0 1 .601-.41A.55.55 0 0 1 8 0c.101 0 .17.027.25.064q.056.025.145.075c.118.066.277.167.463.315.373.297.85.779 1.317 1.537M9.5 6c0-1.105-.672-2-1.5-2s-1.5.895-1.5 2S7.172 8 8 8s1.5-.895 1.5-2"
-            ></path>
-          </svg>
+<section class="min-h-screen bg-white py-10 lg:py-20">
+  <div class="container mx-auto px-5">
+    <Titles
+      text1="NUESTRA"
+      text2="RAZÓN DE SER"
+      color="gris"
+      inline={true}
+      align="center"
+    />
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 mt-8">
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <Corazon height={80} width={80} class="flex-shrink-0" />
           <div>
-            <Typography as="h2" variant="h2" color="white" class="font-bold">
-              MISIÓN:
+            <Typography
+              as="h3"
+              variant="h3"
+              color="gris"
+              class="font-bold mb-2"
+              fontStyle="extrabold"
+            >
+              PROPÓSITO:
             </Typography>
-            <Typography as="p" variant="medium" color="white">
-              “Brindar una atención de calidad con excelencia, calidez y
-              precisión en el diagnóstico de las afecciones neurológicas”.
+            <Typography
+              as="p"
+              variant="small"
+              color="gris"
+              class="text-justify"
+              fontStyle="extrabold"
+            >
+              Contribuir al bienestar neurológico de nuestros pacientes,
+              ofreciendo diagnósticos precisos y confiables realizados con
+              tecnología de vanguardia y un equipo humano altamente capacitado,
+              que combina la excelencia científica con un trato cercano ético y
+              empático, orientado al cuidado de la salud neurológica.
             </Typography>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-start gap-4 mt-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="bi bi-eye-fill text-white w-12 md:w-56 h-auto"
-            viewBox="0 0 16 16"
-          >
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
-            <path
-              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"
-            ></path>
-          </svg>
+        <div class="flex items-start gap-4">
+          <Nave height={80} width={80} class="flex-shrink-0" />
           <div>
-            <Typography as="h2" variant="h2" color="white" class="font-bold">
+            <Typography
+              as="h3"
+              variant="h3"
+              color="gris"
+              class="mb-2"
+              fontStyle="extrabold"
+            >
+              MISIÓN:
+            </Typography>
+            <Typography
+              as="p"
+              variant="small"
+              color="gris"
+              class="text-justify"
+              fontStyle="extrabold"
+            >
+              Brindar una atención de calidad con excelencia, calidez y
+              precisión en el diagnóstico de las afecciones neurológicas.
+            </Typography>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <Ojos height={80} width={80} class="flex-shrink-0" />
+          <div>
+            <Typography
+              as="h3"
+              variant="h3"
+              color="gris"
+              class="mb-2"
+              fontStyle="black"
+            >
               VISIÓN:
             </Typography>
-            <Typography as="p" variant="medium" color="white">
-              “Ser un centro líder en el cuidado de la salud neurológica a nivel
+            <Typography
+              as="p"
+              variant="small"
+              color="gris"
+              class="text-justify"
+              fontStyle="extrabold"
+            >
+              Ser un centro líder en el cuidado de la salud neurológica a nivel
               Latinoamérica, con un compromiso de innovación y mejora continua,
               brindando una atención de excelencia, con el bienestar de nuestros
-              pacientes como nuestra principal motivación”.
+              pacientes como nuestra principal motivación.
             </Typography>
-            <p></p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-center items-center">
-      <Image
-        src={equipo}
-        alt="Equipo de trabajo"
-        width={400}
-        class="rounded-tr-3xl rounded-bl-3xl"
-      />
+
+      <div class="flex justify-center items-center">
+        <Image
+          src={equipo}
+          alt="Equipo de trabajo"
+          class="rounded-3xl shadow-lg w-full max-w-md object-cover"
+        />
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .bg-violeta {
+    background-color: #663399;
+  }
+</style>

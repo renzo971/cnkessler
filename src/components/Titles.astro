@@ -1,18 +1,114 @@
 ---
-const text1 = Astro.props.text1;
-const text2 = Astro.props.text2;
-const classname = Astro.props.classame || "";
+type ColorVariant = "violeta" | "gris";
+
+interface Props {
+  text1: string;
+  text2: string;
+  classname?: string;
+  color?: ColorVariant;
+  inline?: boolean;
+  align?: "left" | "center" | "right";
+}
+
+const {
+  text1,
+  text2,
+  classname = "",
+  color = "violeta",
+  inline = false,
+  align,
+} = Astro.props;
+
+const alignmentClasses = {
+  container: {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+  },
+  wrapper: {
+    left: "md:justify-start",
+    center: "md:justify-center",
+    right: "md:justify-end",
+  },
+};
+
+const baseClasses = {
+  container: [
+    classname,
+    `text-${color}`,
+    align ? alignmentClasses.container[align] : "text-center md:text-left",
+    "mb-8 relative",
+  ],
+  wrapper: `font-montserrat ${
+    inline
+      ? `flex flex-wrap gap-3 items-baseline justify-center ${align ? alignmentClasses.wrapper[align] : "md:justify-start"}`
+      : "space-y-2"
+  }`,
+  title: "relative transition-all duration-300 ease-in-out",
+  text1: "font-medium tracking-tight",
+  text2: "font-extrabold tracking-tighter",
+};
 ---
 
-<div class={classname + "text-violeta text-center md:text-left"}>
-  <h1
-    class="font-montserrat font-medium text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight"
-  >
-    {text1}
-  </h1>
-  <h2
-    class="font-montserrat font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight"
-  >
-    {text2}
-  </h2>
+<div class:list={baseClasses.container}>
+  <div class={baseClasses.wrapper}>
+    <h1
+      class:list={[
+        baseClasses.title,
+        baseClasses.text1,
+        "text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight hover:-translate-y-1",
+      ]}
+    >
+      {text1}
+    </h1>
+    <h2
+      class:list={[
+        baseClasses.title,
+        baseClasses.text2,
+        "text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight hover:-translate-y-1",
+      ]}
+    >
+      {text2}
+    </h2>
+  </div>
 </div>
+
+<style define:vars={{ align }}>
+  .container::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.3;
+    border-radius: 2px;
+
+    /* Default alignment (center on mobile) */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 768px) {
+    .container::after {
+      /* Default alignment (left on desktop) */
+      left: 0;
+      transform: none;
+    }
+  }
+
+  /* Prop-based overrides */
+  .container[style*="--align: right;"]::after {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+  .container[style*="--align: center;"]::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .title {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+</style>

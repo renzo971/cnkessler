@@ -1,6 +1,43 @@
 ---
 import type { HTMLTag, Polymorphic } from "astro/types";
 
+const fontStyleClass = {
+  normal: "font-normal",
+  italic: "italic",
+  bold: "font-bold",
+  bolder: "font-bold",
+  thin: "font-thin",
+  extralight: "font-extralight",
+  extrabold: "font-extrabold",
+  light: "font-light",
+  medium: "font-medium",
+  semibold: "font-semibold",
+  black: "font-black",
+  hairline: "font-thin",
+} as const;
+
+const variantClasses = {
+  h2: "text-lg font-medium uppercase lg:text-2xl",
+  h3: "text-2xl font-semibold uppercase",
+  "atomic-title": "text-5xl font-atomic lowercase",
+  "atomic-quote": "text-2xl font-atomic lowercase",
+  "boxer-title": "text-6xl md:text-7xl font-atomic lowercase",
+  body: "text-xl",
+  medium: "text-md",
+  small: "text-sm",
+  big: "text-6xl",
+  bigger: "text-4xl sm:text-5xl md:text-7xl uppercase",
+} as const;
+
+const colorClasses = {
+  primary: "text-principal",
+  secondary: "text-violeta",
+  purpura: "text-purpurahumo",
+  cafe: "text-cafe",
+  gris: "text-gris",
+  white: "text-white",
+} as const;
+
 type Props<Tag extends HTMLTag> = Polymorphic<{
   as: Tag;
   variant: keyof typeof variantClasses;
@@ -16,41 +53,6 @@ const {
   fontStyle = "normal",
   ...props
 } = Astro.props;
-const fontStyleClass = {
-  normal: "font-normal",
-  italic: "italic",
-  bold: "font-bold",
-  bolder: "font-bold", // tailwind no tiene font-bolder, usas font-bold o font-extrabold
-  thin: "font-thin",
-  extralight: "font-extralight",
-  extrabold: "font-extrabold",
-  light: "font-light",
-  medium: "font-medium",
-  semibold: "font-semibold",
-  black: "font-black",
-  hairline: "font-thin", // no hay "hairline", puedes mapearlo a thin si gustas
-};
-const variantClasses: { [key: string]: string } = {
-  h2: "text-lg font-medium uppercase lg:text-2xl",
-  h3: "text-2xl font-semibold uppercase",
-  "atomic-title": "text-5xl font-atomic lowercase",
-  "atomic-quote": "text-2xl font-atomic lowercase",
-  "boxer-title": "text-6xl md:text-7xl font-atomic lowercase",
-  body: "text-xl",
-  medium: "text-md",
-  small: "text-sm",
-  big: "text-6xl",
-  bigger: "text-4xl sm:text-5xl md:text-7xl uppercase",
-};
-
-const colorClasses = {
-  primary: "text-principal",
-  secondary: "text-violeta",
-  purpura: "text-purpurahumo",
-  cafe: "text-cafe",
-  gris: "text-gris",
-  white: "text-white",
-};
 
 const classes = [
   "font-montserrat",
@@ -58,9 +60,9 @@ const classes = [
   colorClasses[color as keyof typeof colorClasses],
   fontStyleClass[fontStyle as keyof typeof fontStyleClass],
   className,
-];
+].filter(Boolean);
 ---
 
-<Tag class:list={classes} {...props} tabindex="0">
+<Tag class:list={classes} {...props}>
   <slot />
 </Tag>

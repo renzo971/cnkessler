@@ -9,9 +9,9 @@ import ImageFlip from "./ImageFlip.astro";
 import Typography from "./Typography.astro";
 const team = [
   { img: caroline, name: "Caroline" },
+  { img: becqer, name: "Becquer" },
   { img: debora, name: "Débora" },
   { img: elizabeth, name: "Elizabeth" },
-  { img: becqer, name: "Becquer" },
   { img: elizabeth, name: "Miembro 5" },
   { img: elizabeth, name: "Miembro 6" },
 ];
@@ -20,8 +20,14 @@ const team = [
 <section id="about" class="bg-white py-10 lg:py-20">
   <div class="container mx-auto px-5 grid lg:grid-cols-2 gap-8 items-center">
     <div>
-      <Titles text1="¿Quiénes" text2="somos?" />
-      <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
+      <Titles text1="¿Quiénes" text2="somos?" color="gris" />
+      <Typography
+        as="p"
+        variant="small"
+        color="gris"
+        class="mt-4 text-justify"
+        fontStyle="extrabold"
+      >
         Desde 2017, nos hemos consolidado como un centro peruano dedicado al
         cuidado de la salud neurológica. Nos especializamos en la realización de
         estudios neurofisiológicos que examinan de manera dinámica y objetiva el
@@ -30,7 +36,13 @@ const team = [
         internacionales, gracias a un equipo humano altamente capacitado, cuyo
         principal objetivo es el bienestar de nuestros pacientes.
       </Typography>
-      <Typography as="p" variant="small" color="gris" class="mt-4 text-justify">
+      <Typography
+        as="p"
+        variant="small"
+        color="gris"
+        class="mt-4 text-justify"
+        fontStyle="extrabold"
+      >
         Contamos con equipos médicos de última generación y espacios diseñados
         para su comodidad, lo que nos permite ofrecer precisión en el
         diagnóstico, pronóstico y orientación terapéutica de las diversas

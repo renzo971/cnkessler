@@ -4,11 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+    --color-*: initial;
+    --color-white: #ffffff;
     --color-principal: #7c3288;
     --color-violeta: #7c3288;
     --color-purpurahumo: #504957;
     --color-cafe: #9a7e71;
-    --color-gris: #a5a2ac;
+    --color-gris: #545454;
     --font-montserrat: "Montserrat", sans-serif;
 }
 
