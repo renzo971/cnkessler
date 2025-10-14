@@ -8,20 +8,32 @@ interface Props {
   BackImage: ImageMetadata;
   className?: string;
   sizew?: number;
+  quality?: number;
 }
-const { BackImage, text, className = "" } = Astro.props;
+
+const {
+  BackImage,
+  text,
+  className = "",
+  sizew = 800,
+  quality = 80,
+} = Astro.props;
 ---
 
 <div class="flex flex-col items-center group w-auto h-auto">
-  <!-- Imagen usando la etiqueta <Image> de Astro -->
-  <div class="relative w-full">
+  <div class="relative w-full overflow-hidden">
     <Image
       src={BackImage}
       alt={text}
-      class={className + " object-cover w-full h-full"}
+      width={sizew}
+      height={Math.round(sizew * (9 / 16))}
+      quality={quality}
+      loading="lazy"
+      decoding="async"
+      class={`reveal-scale opacity-0 ${className} object-cover w-full h-full transition-all duration-700`}
+      format="webp"
     />
 
-    <!-- Texto oculto que aparece al hacer hover (pantallas con hover) -->
     <div
       class="rounded-xl absolute inset-0 flex items-center justify-center bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"
     >
@@ -29,13 +41,66 @@ const { BackImage, text, className = "" } = Astro.props;
     </div>
   </div>
 
-  <!-- Texto visible solo en dispositivos pequeños (debajo de la imagen) -->
   <Typography
     as="p"
     variant="small"
     color="gris"
     class="mt-2 text-center block z-20 lg:hidden"
+    fontStyle="bold"
   >
     {text}
   </Typography>
 </div>
+<style>
+  @keyframes slide-fwd-center {
+    0% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-back-center {
+    0% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  .animate-slide-fwd {
+    animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .animate-slide-back {
+    animation: slide-back-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      forwards;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-slide-fwd");
+          entry.target.classList.remove("animate-slide-back");
+        } else {
+          entry.target.classList.add("animate-slide-back");
+          entry.target.classList.remove("animate-slide-fwd");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll(".reveal-scale").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

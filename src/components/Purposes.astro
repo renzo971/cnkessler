@@ -8,7 +8,7 @@ import Ojos from "@/assets/icons/Ojos.astro";
 import Nave from "@/assets/icons/Nave.astro";
 ---
 
-<section class="min-h-screen bg-white py-10 lg:py-20">
+<section class="bg-white py-16">
   <div class="container mx-auto px-5">
     <Titles
       text1="NUESTRA"
@@ -104,7 +104,7 @@ import Nave from "@/assets/icons/Nave.astro";
         <Image
           src={equipo}
           alt="Equipo de trabajo"
-          class="rounded-3xl shadow-lg w-full max-w-md object-cover"
+          class="reveal-scale rounded-3xl shadow-lg w-full max-w-md object-cover"
         />
       </div>
     </div>
@@ -112,7 +112,55 @@ import Nave from "@/assets/icons/Nave.astro";
 </section>
 
 <style>
-  .bg-violeta {
-    background-color: #663399;
+  @keyframes slide-fwd-center {
+    0% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-back-center {
+    0% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  .animate-slide-fwd {
+    animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .animate-slide-back {
+    animation: slide-back-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      forwards;
   }
 </style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-slide-fwd");
+          entry.target.classList.remove("animate-slide-back");
+        } else {
+          entry.target.classList.add("animate-slide-back");
+          entry.target.classList.remove("animate-slide-fwd");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll(".reveal-scale").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

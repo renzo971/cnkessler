@@ -6,13 +6,22 @@ import {
 } from "@/lib/servicios";
 import Typography from "./Typography.astro";
 import ImageFlip from "./ImageFlip.astro";
+import { Image } from "astro:assets";
+import Icon from "@/assets/icons/Icon.astro";
+import medicina from "@/assets/servicios/medicinadelsueño/principal.jpg";
+import Cerebro from "@/assets/icons/cerebro.svg";
+import Titles from "./Titles.astro";
 ---
 
 <section class="bg-white pt-5 pb-5">
   <div class="max-w-6xl mx-auto text-center">
-    <Typography as="h1" variant="bigger" color="secondary">
-      Servicios <span class="font-extrabold">Generales</span>
-    </Typography>
+    <Titles
+      text1="SERVICIOS"
+      text2="GENERALES"
+      color="gris"
+      inline={true}
+      align="center"
+    />
   </div>
   <div
     class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
@@ -38,9 +47,13 @@ import ImageFlip from "./ImageFlip.astro";
   </div>
 </section><section class="bg-white pt-5 pb-5">
   <div class="max-w-6xl mx-auto text-center">
-    <Typography as="h1" variant="bigger" color="secondary">
-      Servicios <span class="font-extrabold">Especiales</span>
-    </Typography>
+    <Titles
+      text1="SERVICIOS"
+      text2="ESPECIALES"
+      color="gris"
+      inline={true}
+      align="center"
+    />
   </div>
   <div
     class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
@@ -65,28 +78,90 @@ import ImageFlip from "./ImageFlip.astro";
   </div>
   <section class="bg-white pt-5 pb-5">
     <div class="max-w-6xl mx-auto text-center">
-      <Typography as="h1" variant="bigger" color="secondary">
-        Medicina del <span class="font-extrabold">sueño</span>
-      </Typography>
+      <Titles
+        text1="MEDICINA DEL"
+        text2="SUEÑO"
+        color="gris"
+        inline={true}
+        align="center"
+      />
     </div>
-    <div
-      class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto px-4"
-    >
-      {
-        medicinas.map((medicina, i) => (
-          <div class={"col-span-1"}>
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <ImageFlip
-                BackImage={medicina.imagen}
-                text={medicina.titulo}
-                className={
-                  "rounded-xl w-full h-56 md:h-64 lg:h-72 object-cover transition-transform duration-200 ease-in-out transform hover:scale-105"
-                }
+    <div class="flex flex-col md:flex-row gap-8 mt-8 max-w-6xl mx-auto px-4">
+      <div class="md:w-1/2">
+        <Image
+          src={medicina}
+          alt="Medicina del sueño"
+          class="reveal-scale rounded-xl w-full h-auto object-cover shadow-lg"
+        />
+      </div>
+      <div class="md:w-1/2 grid grid-cols-2 gap-4">
+        {
+          medicinas.map((medicina) => (
+            <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src={Cerebro}
+                alt="Medicina del sueño"
+                width={40}
+                height={40}
               />
+              <span class="text-gray-800 font-medium">{medicina.titulo}</span>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </section>
 </section>
+<style>
+  @keyframes slide-fwd-center {
+    0% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-back-center {
+    0% {
+      transform: translateZ(160px) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(0) scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  .animate-slide-fwd {
+    animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .animate-slide-back {
+    animation: slide-back-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      forwards;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-slide-fwd");
+          entry.target.classList.remove("animate-slide-back");
+        } else {
+          entry.target.classList.add("animate-slide-back");
+          entry.target.classList.remove("animate-slide-fwd");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll(".reveal-scale").forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -1,17 +1,22 @@
-import servicio1 from "@/assets/servicios/medicinadelsueño/servicio1.webp";
-import servicio2 from "@/assets/servicios/medicinadelsueño/servicio2.webp";
-import servicio3 from "@/assets/servicios/medicinadelsueño/servicio3.webp";
 export const medicinas = [
   {
-    titulo: "Polisomnografía con titulación de CPAP ",
-    imagen: servicio1,
+    titulo: "Poligrafía",
+    icon: "brain",
+  },
+  {
+    titulo: "Polisomnografía con titulación de CPAP",
+    icon: "brain",
   },
   {
     titulo: "Polisomnografía diagnóstica",
-    imagen: servicio2,
+    icon: "brain",
   },
   {
-    titulo: "oligrafía respiratoria ",
-    imagen: servicio3,
+    titulo: "Test de latencias múltiples",
+    icon: "brain",
+  },
+  {
+    titulo: "Test de mantenimiento de la vigilia",
+    icon: "brain",
   },
 ];
