@@ -97,14 +97,22 @@ import Titles from "./Titles.astro";
       <div class="md:w-1/2 grid grid-cols-2 gap-4">
         {
           medicinas.map((medicina) => (
-            <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow ">
               <Image
                 src={Cerebro}
                 alt="Medicina del sueño"
                 width={40}
                 height={40}
               />
-              <span class="text-gray-800 font-medium">{medicina.titulo}</span>
+              <Typography
+                as="h3"
+                variant="small"
+                color="gris"
+                fontStyle="black"
+                class="text-lg md:text-xl font-montserrat"
+              >
+                {medicina.titulo}
+              </Typography>
             </div>
           ))
         }

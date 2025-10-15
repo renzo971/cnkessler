@@ -2,13 +2,11 @@
 import { Image } from "astro:assets";
 import Logo from "../assets/letrasck.png";
 import FadeContent from "./magicui/FadeContent";
-import Carucel from "./Carucel.astro";
+import Carucel from "./Carrucel.astro";
 ---
 
 <div class="hero">
   <section id="hero">
-    <div id="background"></div>
-
     <Image
       class="slidelogo animate-fade-in animate-duration-slowanimate-duration-slow"
       src={Logo}
@@ -19,35 +17,7 @@ import Carucel from "./Carucel.astro";
     <Carucel />
   </section>
 </div>
-
 <style>
-  #background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url("../assets/background.webp"); /* Ya no es necesario poner ../assets/../assets */
-    background-size: cover;
-    background-position: center;
-  }
-
-  #background::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.6
-    ); /* Capa blanca semitransparente */
-  }
-
   .hero {
     min-height: 100vh;
     display: flex;
