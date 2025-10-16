@@ -4,8 +4,6 @@ import equipos from "@/assets/banners/equipos.png";
 import estudios from "@/assets/banners/estudios.png";
 import pediatricos from "@/assets/banners/pediatricos.png";
 import { Image } from "astro:assets";
-// Puedes agregar las imágenes que desees usar
-const images = [ambientes, equipos, estudios, pediatricos];
 const agregatedvalues = [
   {
     texto: "Ambientes acondicionados",
@@ -37,9 +35,9 @@ const agregatedvalues = [
 <div class="carousel-container">
   <div class="carousel">
     {
-      images.map((img, index) => (
+      agregatedvalues.map((img, index) => (
         <div class="carousel-slide" data-index={index}>
-          <Image src={img} alt={`Slide ${index + 1}`} />
+          <Image src={img.imagen} alt={`Slide ${index + 1}`} />
         </div>
       ))
     }

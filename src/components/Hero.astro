@@ -1,36 +1,86 @@
 ---
 import { Image } from "astro:assets";
-import Logo from "../assets/letrasck.png";
-import FadeContent from "./magicui/FadeContent";
 import Carucel from "./Carrucel.astro";
+import Logowhite from "@/assets/banners/Logowhite.astro";
+import portada from "@/assets/banners/portada.png";
 ---
 
-<div class="hero">
+<div class="max-h-screen hero">
   <section id="hero">
-    <Image
-      class="slidelogo animate-fade-in animate-duration-slowanimate-duration-slow"
-      src={Logo}
-      alt="Astro Logo"
-      width={500}
-      fetchpriority="high"
-    />
-    <Carucel />
-  </section>
+    <!-- imagen de fondo ocupando todo el contenedor -->
+    <Image class="bg-image" src={portada} alt="portada" fetchpriority="high" />
+    <div class="hero-content">
+      <div class="logo-wrapper">
+        <Logowhite
+          class="slidelogo animate-fade-in animate-duration-slowanimate-duration-slow"
+        />
+      </div>
+    </div>
+  </section><Carucel />
 </div>
 <style>
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   #hero {
+    position: relative; /* Crea el contexto para posicionar el contenido */
+    width: 100%;
+  }
+  .bg-image {
+    /* La imagen define el tamaño del contenedor. La hacemos un bloque para evitar espacios extra */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  .hero {
+    width: 100%;
+  }
+  /* overlay para dar contraste al logo */
+  #hero::before {
     display: flex;
     flex-direction: column;
     align-items: center; /* centrado horizontal */
     justify-content: center; /* centrado vertical */
     padding: 16px, 0px, 16px, 16px;
     text-align: center;
+  }
+  /* contenido encima del fondo */
+  .hero-content {
+    /* Posiciona el contenido absolutamente sobre el contenedor #hero */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  /* hacer que el logo ocupe el ancho de la pantalla (responsivo) */
+  .logo-wrapper {
+    width: 50%;
+    padding: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* forzar que el elemento interno (img/svg) escale al contenedor */
+  .logo-wrapper > * {
+    width: 100%;
+    height: auto;
+    max-height: 40vh; /* evita que el logo sea excesivamente alto; ajustar según diseño */
+    display: block;
+  }
+  /* ajustes para móvil */
+  @media (max-width: 640px) {
+    .logo-wrapper {
+      width: 95vw;
+    }
+    .logo-wrapper > * {
+      max-height: 28vh;
+    }
+    .hero-content {
+      gap: 16px;
+    }
   }
 </style>

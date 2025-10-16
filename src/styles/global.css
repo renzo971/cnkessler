@@ -4,7 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --color-*: initial;
     --color-white: #ffffff;
     --color-principal: #7c3288;
     --color-violeta: #7c3288;
