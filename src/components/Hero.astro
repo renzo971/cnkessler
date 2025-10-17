@@ -5,7 +5,7 @@ import Logowhite from "@/assets/banners/Logowhite.astro";
 import portada from "@/assets/banners/portada.png";
 ---
 
-<div class="max-h-screen hero">
+<div>
   <section
     id="hero"
     class="lg:h-[50vh] md:h-[20vh] h-[20vh] relative overflow-hidden"
@@ -22,12 +22,10 @@ import portada from "@/assets/banners/portada.png";
         <Logowhite class="slidelogo animate-fade-in animate-duration-slow" />
       </div>
     </div>
-  </section><Carucel />
+  </section>
+  <Carucel />
 </div>
 <style>
-  .hero {
-    width: 100%;
-  }
   /* overlay para dar contraste al logo */
   #hero::before {
     display: flex;
