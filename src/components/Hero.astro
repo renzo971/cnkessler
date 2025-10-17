@@ -6,30 +6,25 @@ import portada from "@/assets/banners/portada.png";
 ---
 
 <div class="max-h-screen hero">
-  <section id="hero">
+  <section
+    id="hero"
+    class="lg:h-[50vh] md:h-[20vh] h-[20vh] relative overflow-hidden"
+  >
     <!-- imagen de fondo ocupando todo el contenedor -->
-    <Image class="bg-image" src={portada} alt="portada" fetchpriority="high" />
+    <Image
+      class="bg-image absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      src={portada}
+      alt="portada"
+      fetchpriority="high"
+    />
     <div class="hero-content">
       <div class="logo-wrapper">
-        <Logowhite
-          class="slidelogo animate-fade-in animate-duration-slowanimate-duration-slow"
-        />
+        <Logowhite class="slidelogo animate-fade-in animate-duration-slow" />
       </div>
     </div>
   </section><Carucel />
 </div>
 <style>
-  #hero {
-    position: relative; /* Crea el contexto para posicionar el contenido */
-    width: 100%;
-  }
-  .bg-image {
-    /* La imagen define el tamaño del contenedor. La hacemos un bloque para evitar espacios extra */
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-  }
   .hero {
     width: 100%;
   }
@@ -58,7 +53,7 @@ import portada from "@/assets/banners/portada.png";
   }
   /* hacer que el logo ocupe el ancho de la pantalla (responsivo) */
   .logo-wrapper {
-    width: 50%;
+    width: 80%; /* Más ancho en móviles */
     padding: 0 8px;
     display: flex;
     justify-content: center;
@@ -71,16 +66,10 @@ import portada from "@/assets/banners/portada.png";
     max-height: 40vh; /* evita que el logo sea excesivamente alto; ajustar según diseño */
     display: block;
   }
-  /* ajustes para móvil */
-  @media (max-width: 640px) {
+  /* ajustes para pantallas más grandes */
+  @media (min-width: 768px) {
     .logo-wrapper {
-      width: 95vw;
-    }
-    .logo-wrapper > * {
-      max-height: 28vh;
-    }
-    .hero-content {
-      gap: 16px;
+      width: 50%; /* Volvemos al 50% en pantallas de tablet y escritorio */
     }
   }
 </style>
