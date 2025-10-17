@@ -3,31 +3,35 @@ import ambientes from "@/assets/banners/ambientes.png";
 import equipos from "@/assets/banners/equipos.png";
 import estudios from "@/assets/banners/estudios.png";
 import pediatricos from "@/assets/banners/pediatricos.png";
-import { Image } from "astro:assets";
+import ImageCarrucel from "./ImageCarrucel.astro";
+import Ambientes from "@/assets/icons/ambientes.astro";
+import Pediatrico from "@/assets/icons/pediatrico.astro";
+import Equipos from "@/assets/icons/equipos.astro";
+import Hours from "@/assets/icons/24h.astro";
 const agregatedvalues = [
   {
     texto: "Ambientes acondicionados",
     imagen: ambientes,
     position: "right",
-    //icon: computer,
+    icon: Ambientes,
   },
   {
     texto: "Equipos de ultima generación",
     imagen: equipos,
     position: "left",
-    // icon: computer,
+    icon: Equipos,
   },
   {
     texto: "Estudios las 24 horas del día",
     imagen: estudios,
     position: "center",
-    //icon: "@/assets/icons/clock.webp",
+    icon: Hours,
   },
   {
     texto: "Estudios pedriátricos (niños recién nacidos)",
     imagen: pediatricos,
     position: "center",
-    //icon: bear,
+    icon: Pediatrico,
   },
 ];
 ---
@@ -37,7 +41,12 @@ const agregatedvalues = [
     {
       agregatedvalues.map((img, index) => (
         <div class="carousel-slide" data-index={index}>
-          <Image src={img.imagen} alt={`Slide ${index + 1}`} />
+          <ImageCarrucel
+            Arte={img.imagen}
+            title={img.texto}
+            titlePosition="left"
+            icon={img.icon}
+          />
         </div>
       ))
     }

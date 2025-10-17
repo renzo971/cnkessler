@@ -5,58 +5,48 @@ import Typography from "./Typography.astro";
 interface Props {
   Arte: ImageMetadata;
   title?: string;
+  icon?: any; // Cambiado a any para aceptar componentes SVG
   titlePosition?: "left" | "center" | "right";
 }
 
 const {
   Arte,
   title = "Especialistas en tomas",
-  titlePosition = "center",
+  icon: Icon, // Renombrado con mayúscula para indicar que es un componente
+  titlePosition = "left",
 } = Astro.props;
+
+// Mapeo de posiciones a clases de Tailwind
+const positionClasses = {
+  left: "justify-start pl-8",
+  center: "justify-center",
+  right: "justify-end pr-8",
+};
 ---
 
-<div
-  style="position: relative; display: inline-block; width: 100%; height: 100%;"
->
+<div class="relative w-full h-full">
   <Image
     src={Arte}
-    alt="Astro Logo"
+    alt="Banner imagen"
     height={1978}
     width={5692}
+    class="w-full h-full object-cover"
     loading="lazy"
     decoding="async"
   />
   <div
-    style={`position: absolute; top: 50%; left: ${
-      titlePosition === "left"
-        ? "30%"
-        : titlePosition === "right"
-          ? "75%"
-          : "50%"
-    }; transform: translate(-50%, -70%); text-align: ${titlePosition}; width: 100%;`}
+    class={`absolute inset-0 flex items-center ${positionClasses[titlePosition]}`}
   >
     <div
-      class="animate-fade-in animate-delay-500"
-      style="
-        max-width: 600px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-      "
+      class="animate-fade-in animate-delay-500 w-1/3 px-4 text-center flex flex-col items-center gap-6"
     >
-      <div
-        style="display: flex; justify-content: center; align-items: center; width: 100%;"
-      >
-        <div style="margin: 0 auto;">
-          <slot />
-        </div>
-      </div>
-      <Typography as="h2" variant="big" color="white" fontStyle="extrabold">
+      {Icon && <Icon class="w-24 h-24 text-white" />}
+      <Typography as="h3" variant="h3" color="white" fontStyle="black">
         {title}
       </Typography>
+      <div class="text-center">
+        <slot />
+      </div>
     </div>
   </div>
 </div>
