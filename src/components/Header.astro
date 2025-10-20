@@ -5,8 +5,11 @@ import Logo from "../assets/logov2.webp";
 import { Image } from "astro:assets";
 const pages = [
   { url: "#hero", title: "Inicio" },
+  { url: "#nosotros", title: "Nosotros" },
   { url: "#about", title: "¿Quienes somos?" },
   { url: "#servicios", title: "Servicios" },
+  { url: "#testimonios", title: "Opiniones" },
+  { url: "#especialidades", title: "Especialidades" },
   { url: "#contac", title: "Contacto" },
 ];
 const currentPath = Astro.url.pathname;
@@ -102,6 +105,7 @@ const currentPath = Astro.url.pathname;
         pages.map((page) => (
           <a
             href={page.url}
+            data-mobile-link
             class={`block px-3 py-2 text-base font-semibold text-white hover:bg-gray-50" ${
               currentPath === page.url ? "text-sky-400" : "text-white"
             }`}
@@ -122,16 +126,25 @@ const currentPath = Astro.url.pathname;
     const menuBtn = document.getElementById("menu-btn");
     const closeMenu = document.getElementById("close-menu");
     const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuLinks = document.querySelectorAll("[data-mobile-link]");
 
     if (!menuBtn || !closeMenu || !mobileMenu) return; // Evita errores si algún elemento no se encuentra
+
+    const closeMobileMenu = () => {
+      mobileMenu.classList.add("translate-x-full");
+      // Espera a que la transición termine para ocultarlo
+      setTimeout(() => mobileMenu.classList.add("hidden"), 300);
+    };
 
     menuBtn.addEventListener("click", () => {
       mobileMenu.classList.remove("hidden", "translate-x-full");
     });
 
-    closeMenu.addEventListener("click", () => {
-      mobileMenu.classList.add("translate-x-full");
-      setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+    closeMenu.addEventListener("click", closeMobileMenu);
+
+    // Cierra el menú al hacer clic en un enlace
+    mobileMenuLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
     });
 
     document.addEventListener("click", (event) => {
@@ -139,8 +152,7 @@ const currentPath = Astro.url.pathname;
         !mobileMenu.contains(event.target) &&
         !menuBtn.contains(event.target)
       ) {
-        mobileMenu.classList.add("translate-x-full");
-        setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+        closeMobileMenu();
       }
     });
   });
